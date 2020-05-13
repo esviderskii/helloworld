@@ -2,8 +2,7 @@ pipeline {
     agent any 
     stages {
         stage('Build') { 
-            steps {
-		echo("${GIT_BRANCH}") 
+            steps { 
                 sh 'pwd' 
             }
         }
@@ -12,10 +11,18 @@ pipeline {
                 sh 'ls -lah' 
             }
         }
-        stage('Deploy') {
+        stage('Test') {
             steps {
-                sh 'uptime'
+                ifTest()
             }
         }
     }
+}
+
+def ifTest(){
+        if ("${GIT_BRANCH}" == "origin/master") {
+            echo('master')
+        } else {
+            echo("dev")
+        }
 }
