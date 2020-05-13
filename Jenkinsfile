@@ -20,7 +20,7 @@ pipeline {
 }
 
 def ifTest(){
-        if ("${GIT_BRANCH}" == "origin/master") {
+        if ("${GIT_BRANCH}" == "origin/development") {
             echo('master')
         } else {
             echo("dev")
