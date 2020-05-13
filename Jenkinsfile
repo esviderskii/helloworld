@@ -13,6 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
+		echo(env.BRANCH_NAME)
                 ifTest()
             }
         }
